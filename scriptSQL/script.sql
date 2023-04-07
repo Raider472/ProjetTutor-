@@ -16,3 +16,5 @@ CREATE TABLE CategorieUtilisateur (
     id_categorie_utilisateur INT NOT NULL PRIMARY KEY AUTO INCREMENT,
     nom_categorie VARCHAR(50) NOT NULL
 );
+
+--
