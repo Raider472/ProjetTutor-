@@ -61,13 +61,13 @@ CREATE TABLE EmplacementTerminal (
 );
 
 CREATE TABLE PlaylistPubs (
-    id_playlist_pubs INT NOT NULL AUTO INCREMENT PRIMARY KEY,
+    PRIMARY KEY(id_pubs, id_playlist),
     id_pubs INT REFERENCES Pubs(id_pubs) NOT NULL,
     id_playlist INT REFERENCES Playlist(id_playlist) NOT NULL
 );
 
 CREATE TABLE PlaylistTerminaux (
-    id_playlist_terminaux INT NOT NULL AUTO INCREMENT PRIMARY KEY,
+    PRIMARY KEY(id_terminal, id_playlist),
     id_playlist INT REFERENCES Playlist(id_playlist) NOT NULL,
     id_terminal INT REFERENCES Terminal(id_terminal) NOT NULL
 );
