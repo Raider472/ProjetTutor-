@@ -90,14 +90,14 @@ CREATE TABLE Historique (
 
 -- Création du jeu de données;
 
-INSERT INTO Utilisateur VALUES (1, admin, admin, 'super_admin');
+INSERT INTO Utilisateur VALUES (1, 'sudo', 'sudo', 1), (2, 'admin', 'admin', 2), (3, 'pgeorges', 'Georges84@'), (4, 'nmart', 'nat78#');
 INSERT INTO CategorieUtilisateur VALUES (1, 'super_admin'),(2, 'admin'),(3, 'opérateur'),(4,'utilisateur');
 INSERT INTO Playlist VALUES (1, '2022-03-10', '2022-03-17', 'Outilages', '2022-03-07 15:47:12'),(2, '2022-03-23', '2022-03-30', 'Maroquinerie', '2022-03-19 11:23:43');
-INSERT INTO Pubs VALUES (1, 'Nouveau sac 1', 75.00, '.mp4'),(2, 'Sets tournevis 1', 43.34, '.mkv');
-INSERT INTO Terminal VALUES (1, 'Samnsung modèle 1', '00:1P:56:11:3B:L7', 'Écran de télévision', 'Outilages', 'Outilages');
-INSERT INTO TypeTerminal VALUES (1, 'Écran de télévision');
+INSERT INTO Pubs VALUES (1, 'Nouveau sac 1', 75.00, '.mp4'),(2, 'Sets tournevis 1', 43.34, '.mkv'),(3, 'Nouveau jouet 1', 0, '.png'),(4, 'Promotion Fromagerie', 0, '.jpeg');
+INSERT INTO Terminal VALUES (1, 'Samnsung modèle X', '00:1P:56:11:3B:L7', 'Écran de télévision', 'Outilages', 'Outilages'),(2, 'Samnsung modèle X', '01:3R:34:67:9Y:J0', 'Écran de télévision', 'Fromagerie', 'Fromagerie');
+INSERT INTO TypeTerminal VALUES (1, 'Écran de télévision'), (2, 'Écran de télévision');
 INSERT INTO EmplacementTerminal VALUES (1, 'Fromagerie'),(2, 'Outilages'),(3, 'Boucherie'),(4, 'Prêt-à-porter'),(5, 'Poissonnerie');
 INSERT INTO PlaylistPubs VALUES (1, 2, 1);
 INSERT INTO PlaylistTerminaux VALUES (1, 1, 1);
-INSERT INTO TypeFichier VALUES ('.mp4', 'MPEG-4'),('.mkv', 'Matroska Video');
+INSERT INTO TypeFichier VALUES ('.mp3', 'MPEG-2'),('.mp4', 'MPEG-4'),('.mkv', 'Matroska Video'),('.png', 'Portable Network Graphic'),('.jpeg', 'Joint Photographic Experts Group'),('.gif', 'Graphics Interchange Format');
 INSERT INTO Historique VALUES (1, 1, 1, '2022-03-10', '2022-03-17', 1, 'Écran de télévision', 3);
