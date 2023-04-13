@@ -79,7 +79,6 @@ CREATE TABLE TypeFichier (
 
 CREATE TABLE Historique (
     id_historique INT NOT NULL AUTO INCREMENT PRIMARY KEY,
-    id_playlist_terminaux INT REFERENCES PlaylistTerminaux(id_playlist_terminaux) NOT NULL,
     id_playlist INT REFERENCES Playlist(id_playlist) NOT NULL,
     debut_date_playlist INT REFERENCES Playlist(debut_date_playlist) NOT NULL,
     fin_date_playlist INT REFERENCES Playlist(fin_date_playlist) NOT NULL,
@@ -100,4 +99,4 @@ INSERT INTO EmplacementTerminal VALUES (1, 'Fromagerie'), (2, 'Outilages'), (3, 
 INSERT INTO PlaylistPubs VALUES (2, 1), (1, 2);
 INSERT INTO PlaylistTerminaux VALUES (1, 1), (2, 3);
 INSERT INTO TypeFichier VALUES ('.mp3', 'MPEG-2'), ('.mp4', 'MPEG-4'), ('.mkv', 'Matroska Video'), ('.png', 'Portable Network Graphic'), ('.jpeg', 'Joint Photographic Experts Group'), ('.gif', 'Graphics Interchange Format');
-INSERT INTO Historique VALUES (1, 1, 1, '2022-03-10', '2022-03-17', 1, 'Écran de télévision', 3078), (2, 2, 2, '2022-12-13', '2022-12-29', 3, 'Écran de télévision', 28890);
+INSERT INTO Historique VALUES (1, 1, '2022-03-10', '2022-03-17', 1, 'Écran de télévision', 3078), (2, 2, '2022-12-13', '2022-12-29', 3, 'Écran de télévision', 28890);
