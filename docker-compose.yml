@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  php:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports: 
+      - 8100:80
+
+  db_api: 
+    image: mysql
+    restart: unless-stopped
+    container_name: db_api
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=app_db
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: unless-stopped
+    container_name: pma_api
+    ports:
+      - 8020:80
+    depends_on:
+      db_api:
+        condition: service_healthy
+    environment:
+      - PMA_HOST=db_api
+      - PMA_ARBITRARY=1
