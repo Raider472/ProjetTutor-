@@ -8,5 +8,10 @@
 </head>
 <body>
     <h1>ZA WARUDO !</h1>
+    <?php
+        require_once("./PHP/Classe/Utilisateur.php");
+        $test = new Utilisateur(10,"edsdsq", 1);
+        echo $test->getId_categorie()->getNom_categorie();
+    ?>
 </body>
 </html>
