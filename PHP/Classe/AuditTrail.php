@@ -1,6 +1,5 @@
 <?php
     require_once("functionConnexion/ConnexionDocker.php");
-    include("./Playlist.php");
     require("./Playlist.php");
     require("./Utilisateur.php");
     require("./CategorieUtilisateur.php");
