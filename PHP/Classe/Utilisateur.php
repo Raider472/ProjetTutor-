@@ -4,7 +4,6 @@
     class Utilisateur implements JsonSerializable {
         private int $id_utilisateur;
         private string $login_utilisateur;
-        //private $pwd_utilisateur;
         private CategorieUtilisateur $id_categorie_utilisateur;
 
         public function __construct($id_utilisateur, $login_utilisateur, $id_categorie_utilisateur) {

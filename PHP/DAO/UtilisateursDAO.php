@@ -26,6 +26,12 @@
             $this->setArrayTab($Utilisateur);
         }
 
+        public function insertUtilisateur(string $login, string $pwd, int $idCategorie) {
+            $dbo = connexion();
+            $dbo -> execSQL("INSERT INTO Utilisateur(login_utilisateur, pwd_utilisateur, id_categorie_utilisateur) VALUES (\"$login\", AES_ENCRYPT(\"$pwd\", \"YepaGaming\"), $idCategorie)");
+            unset($dbo);
+        }
+
         
         /*public function fetchUtilisateurById($id) {
             $dbo = connexion();
