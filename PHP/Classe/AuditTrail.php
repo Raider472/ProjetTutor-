@@ -11,7 +11,7 @@
         private Utilisateur $id_utilisateur;
         private CategorieUtilisateur $id_categorie_utilisateur;
 
-        public function __construct($id_audit_trail = 0, $id_playlist = 0, $creation_date_playlist = "", $id_utilisateur = 0, $id_categorie_utilisateur = 0) {
+        public function __construct($id_audit_trail, $id_playlist, $creation_date_playlist, $id_utilisateur, $id_categorie_utilisateur) {
             if($id_audit_trail!=0) {
                 $this->fetchAuditTrailById($id_audit_trail);
             }
@@ -40,41 +40,33 @@
         public function getId_AuditTrail() {
             return $this->id_audit_trail;
         }
-
-        public function setId_AuditTrail($id_audit_trail) {
-            $this->id_audit_trail = $id_audit_trail;
+        public function getCreationDatePlaylist() {
+            return $this->creation_date_playlist;
         }
-
+        public function getId_Utilisateur() {
+            return $this->id_utilisateur;
+        }
+        public function getId_CategorieUtilisateur() {
+            return $this->id_categorie_utilisateur;
+        }
         public function getPlaylist() {
             return $this->id_playlist;
         }
 
-        public function setPlaylist($id_playlist) {
-            $this->id_playlist = $id_playlist;
+        public function setId_AuditTrail($id_audit_trail) {
+            $this->id_audit_trail = $id_audit_trail;
         }
-
-        public function getCreationDatePlaylist() {
-            return $this->creation_date_playlist;
-        }
-
         public function setCreationDatePlaylist($creation_date_playlist) {
             $this->creation_date_playlist = $creation_date_playlist;
         }
-
-        public function getId_Utilisateur() {
-            return $this->id_utilisateur;
+        public function setId_CategorieUtilisateur($id_categorie_utilisateur) {
+            $this->id_categorie_utilisateur = $id_categorie_utilisateur;
         }
-
         public function setId_Utilisateur($id_utilisateur) {
             $this->id_utilisateur = $id_utilisateur;
         }
-
-        public function getId_CategorieUtilisateur() {
-            return $this->id_categorie_utilisateur;
-        }
-
-        public function setId_CategorieUtilisateur($id_categorie_utilisateur) {
-            $this->id_categorie_utilisateur = $id_categorie_utilisateur;
+        public function setPlaylist($id_playlist) {
+            $this->id_playlist = $id_playlist;
         }
     }
 ?>
