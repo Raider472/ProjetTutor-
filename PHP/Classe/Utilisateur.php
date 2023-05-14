@@ -1,7 +1,7 @@
 <?php
     require_once("CategorieUtilisateur.php");
     require_once("functionConnexion/ConnexionDocker.php");
-    class Utilisateur {
+    class Utilisateur implements JsonSerializable {
         private int $id_utilisateur;
         private string $login_utilisateur;
         //private $pwd_utilisateur;
@@ -37,16 +37,12 @@
             $this->id_categorie_utilisateur = $id_categorie;
         }
 
-        public function fetchUtilisateurById($id) {
-            $dbo = connexion();
-            $req = $dbo -> execSQL("SELECT * FROM Utilisateur WHERE id_utilisateur =" . $id);
-            unset($dbo);
-            foreach($req as $lesrequeteTab) {
-                $this->id_utilisateur = $lesrequeteTab["id_utilisateur"];
-                $this->login_utilisateur = $lesrequeteTab["login_utilisateur"];
-                $this->id_categorie_utilisateur = new CategorieUtilisateur($lesrequeteTab["id_categorie_utilisateur"]);
-            }
+        public function jsonSerialize():mixed {
+            return [
+                $this->id_utilisateur,
+                $this->login_utilisateur,
+                $this->id_categorie_utilisateur
+            ];
         }
-        //API Postman
     }
 ?>

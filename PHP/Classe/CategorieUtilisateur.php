@@ -1,11 +1,11 @@
 <?php
     require_once("functionConnexion/ConnexionDocker.php");
-    class CategorieUtilisateur {
+    class CategorieUtilisateur implements JsonSerializable {
         private int $id_categorie_utilisateur;
         private string $nom_categorie;
 
-        public function __construct($id_categorie = 0, $nom_categorie = "") {
-            if($id_categorie!=0) {
+        public function __construct($id_categorie = 4, $nom_categorie = "utilisateur") {
+            if($id_categorie!=4) {
                 $this->fetchCategorieById($id_categorie);
             }
             else {
@@ -38,6 +38,13 @@
 
         public function setNom_categorie($nom_categorie) {
             $this->nom_categorie = $nom_categorie;
+        }
+
+        public function jsonSerialize():mixed {
+            return [
+                $this->id_categorie_utilisateur,
+                $this->nom_categorie
+            ];
         }
     }
 ?>
