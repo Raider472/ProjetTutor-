@@ -5,9 +5,9 @@
     $DAO = new LesUtilisateurs();
 
     if (isset($_GET["op"]) && $_GET["op"] === "ajout") {
-        $identifiants['login'] = (isset($_GET['login'])?$_GET['login']:"");
-        $identifiants['idCategorie'] = (isset($_GET['idCategorie'])?$_GET['idCategorie']:"");
-        $identifiants['mdp'] = (isset($_GET['mdp'])?$_GET['mdp']:"");
+        $identifiants['login'] = (isset($_POST['login'])?$_POST['login']:"");
+        $identifiants['idCategorie'] = (isset($_POST['idCategorie'])?$_POST['idCategorie']:"");
+        $identifiants['mdp'] = (isset($_POST['mdp'])?$_POST['mdp']:"");
         $DAO->insertUtilisateur($identifiants['login'], $identifiants['mdp'], (int)$identifiants['idCategorie']);
     }
 
