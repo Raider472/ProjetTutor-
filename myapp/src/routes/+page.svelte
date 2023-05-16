@@ -9,9 +9,6 @@
                 if(response.ok) {
                     return response.json()
                 }
-                else {
-                    alert("problème")
-                }
             })
             .catch(function (erreur) {
                 alert(erreur.message)
@@ -30,6 +27,14 @@
             method: 'POST',
             body: data
         })
+            .then(function (response) {
+                if(response.ok) {
+                    return console.log("success")
+                }
+            })
+            .catch(function (erreur) {
+                alert(erreur.message)
+            })
     }
 </script>
 
