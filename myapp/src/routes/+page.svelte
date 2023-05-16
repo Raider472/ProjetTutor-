@@ -1,5 +1,8 @@
 <script lang="ts" async>
     let url = "http://localhost:8100/"
+    let pseudo = ""
+    let mdp = ""
+    let categorie = ""
     function RecevoirJson(): void {
         fetch(url)
             .then(function (response) {
@@ -19,14 +22,10 @@
     }
 
     function envoyerDonnées(): void {
-        let pseudo = document.querySelector("#pseudo") as HTMLInputElement
-        let mdp = document.querySelector("#mdp") as HTMLInputElement
-        let categorie = document.querySelector("#categorie") as HTMLInputElement
         const data = new FormData();
-        data.append("login", pseudo.value)
-        data.append("mdp", mdp.value)
-        data.append("idCategorie", categorie.value)
-
+        data.append("login", pseudo)
+        data.append("mdp", mdp)
+        data.append("idCategorie", categorie)
         fetch(url+"?op=ajout", {
             method: 'POST',
             body: data
@@ -45,16 +44,16 @@
     <br>
     <label>
         pseudo
-        <input type="text" id="pseudo">
+        <input type="text" bind:value={pseudo}>
     </label>
     <br>
     <label>
         mot de passe
-        <input type="text" id="mdp">
+        <input type="text" bind:value={mdp}>
     </label>
     <br>
     <label>
         Categorie
-        <input type="text" id="categorie">
+        <input type="text" bind:value={categorie}>
     </label>
 </section>
