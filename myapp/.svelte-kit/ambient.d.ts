@@ -26,11 +26,11 @@
  * ```
  */
 declare module '$env/static/private' {
+	export const ACSvcPort: string;
 	export const ALLUSERSPROFILE: string;
 	export const APPDATA: string;
 	export const ChocolateyInstall: string;
 	export const ChocolateyLastPathUpdate: string;
-	export const ChocolateyToolsLocation: string;
 	export const CHROME_CRASHPAD_PIPE_NAME: string;
 	export const COLOR: string;
 	export const COLORTERM: string;
@@ -38,6 +38,7 @@ declare module '$env/static/private' {
 	export const CommonProgramW6432: string;
 	export const COMPUTERNAME: string;
 	export const ComSpec: string;
+	export const DASHLANE_DLL_DIR: string;
 	export const DriverData: string;
 	export const EDITOR: string;
 	export const FPS_BROWSER_APP_PROFILE_STRING: string;
@@ -78,7 +79,6 @@ declare module '$env/static/private' {
 	export const NUMBER_OF_PROCESSORS: string;
 	export const OneDrive: string;
 	export const OneDriveCommercial: string;
-	export const OneDriveConsumer: string;
 	export const ORIGINAL_XDG_CURRENT_DESKTOP: string;
 	export const OS: string;
 	export const Path: string;
@@ -106,7 +106,6 @@ declare module '$env/static/private' {
 	export const USERDOMAIN_ROAMINGPROFILE: string;
 	export const USERNAME: string;
 	export const USERPROFILE: string;
-	export const VBOX_HWVIRTEX_IGNORE_SVM_IN_USE: string;
 	export const VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
 	export const VSCODE_GIT_ASKPASS_MAIN: string;
 	export const VSCODE_GIT_ASKPASS_NODE: string;
@@ -142,11 +141,11 @@ declare module '$env/static/public' {
  */
 declare module '$env/dynamic/private' {
 	export const env: {
+		ACSvcPort: string;
 		ALLUSERSPROFILE: string;
 		APPDATA: string;
 		ChocolateyInstall: string;
 		ChocolateyLastPathUpdate: string;
-		ChocolateyToolsLocation: string;
 		CHROME_CRASHPAD_PIPE_NAME: string;
 		COLOR: string;
 		COLORTERM: string;
@@ -154,6 +153,7 @@ declare module '$env/dynamic/private' {
 		CommonProgramW6432: string;
 		COMPUTERNAME: string;
 		ComSpec: string;
+		DASHLANE_DLL_DIR: string;
 		DriverData: string;
 		EDITOR: string;
 		FPS_BROWSER_APP_PROFILE_STRING: string;
@@ -194,7 +194,6 @@ declare module '$env/dynamic/private' {
 		NUMBER_OF_PROCESSORS: string;
 		OneDrive: string;
 		OneDriveCommercial: string;
-		OneDriveConsumer: string;
 		ORIGINAL_XDG_CURRENT_DESKTOP: string;
 		OS: string;
 		Path: string;
@@ -222,7 +221,6 @@ declare module '$env/dynamic/private' {
 		USERDOMAIN_ROAMINGPROFILE: string;
 		USERNAME: string;
 		USERPROFILE: string;
-		VBOX_HWVIRTEX_IGNORE_SVM_IN_USE: string;
 		VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
 		VSCODE_GIT_ASKPASS_MAIN: string;
 		VSCODE_GIT_ASKPASS_NODE: string;

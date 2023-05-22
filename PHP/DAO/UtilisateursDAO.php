@@ -1,5 +1,5 @@
 <?php
-    require_once("./PHP/Classe/Utilisateur.php");
+    require_once("./Classe/Utilisateur.php");
     class LesUtilisateurs implements JsonSerializable {
         private array $UtilisateursTab;
 
@@ -24,6 +24,18 @@
                 );
             }
             $this->setArrayTab($Utilisateur);
+        }
+
+        public function fetchUtilisateurByLoginAndPassword(string $login, string $password): bool {
+            $dbo = connexion();
+            $requete = $dbo->execSQL("SELECT * FROM Utilisateur WHERE login_utilisateur = \"$login\" AND pwd_utilisateur = AES_ENCRYPT(\"$password\", \"YepaGaming\")");
+            unset($dbo);
+            if (count($requete) != 0) {
+                return true;
+            }
+            else {
+                return false;
+            }
         }
 
         public function insertUtilisateur(string $login, string $pwd, int $idCategorie) {
