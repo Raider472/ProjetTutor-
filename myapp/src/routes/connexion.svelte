@@ -20,14 +20,14 @@
             .then(function (json) {
                 console.log(json)
                 if(json === true) {
-                    labelMdp = "connexion réussi"
+                    window.location.href = '/accueil'
                 }
                 else {
                     labelMdp = "erreur connexion"
                 }
             })
             .catch(function (erreur) {
-                alert(erreur.message)
+                labelMdp = erreur.message
             })
     }
 </script>
