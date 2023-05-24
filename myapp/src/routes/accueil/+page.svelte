@@ -18,6 +18,10 @@
             })
     }
 
+    function retourConnexion() {
+        window.location.href = '/'
+    }
+
     function envoyerDonnées(): void {
         const data = new FormData();
         data.append("login", pseudo)
@@ -64,4 +68,7 @@
         Categorie
         <input type="text" bind:value={categorie}>
     </label>
+    <button on:click={retourConnexion}>
+        Deconnexion
+    </button>
 </section>

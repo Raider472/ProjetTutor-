@@ -42,8 +42,8 @@
 
         public function jsonSerialize():mixed {
             return [
-                $this->id_categorie_utilisateur,
-                $this->nom_categorie
+               "IdCategorie" => $this->id_categorie_utilisateur,
+               "NomCategorie" => $this->nom_categorie
             ];
         }
     }

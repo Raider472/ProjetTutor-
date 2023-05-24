@@ -2,7 +2,7 @@
     let login = ""
     let mdp = ""
     let labelMdp = ""
-    let url = "http://localhost:8100/PHP/API.php"
+    let url = "http://localhost:8100"
 
     function connexion(): void {
         const data = new FormData();
