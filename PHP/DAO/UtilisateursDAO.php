@@ -26,7 +26,7 @@
             $this->setArrayTab($Utilisateur);
         }
 
-        public function fetchUtilisateurByLoginAndPassword(string $login, string $password): bool {
+        public function verificationLoginPassword(string $login, string $password): bool {
             $dbo = connexion();
             $requete = $dbo->execSQL("SELECT * FROM Utilisateur WHERE login_utilisateur = \"$login\" AND pwd_utilisateur = AES_ENCRYPT(\"$password\", \"YepaGaming\")");
             unset($dbo);
@@ -38,11 +38,23 @@
             }
         }
 
-        public function fetchIdCategorieByIdCategorie(int $categorie): bool {
+        public function verifieurExistenceCategorie(int $categorie): bool {
             $dbo = connexion();
             $requete = $dbo->execSQL("SELECT id_categorie_utilisateur FROM Utilisateur WHERE id_categorie_utilisateur = $categorie ");
             unset($dbo);
             if (count($requete) != 0) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        public function verifieurDoublonPseudo(String $login): bool {
+            $dbo = connexion();
+            $requete = $dbo->execSQL("SELECT login_utilisateur FROM Utilisateur WHERE login_utilisateur = \"$login\"");
+            unset($dbo);
+            if (count($requete) === 0) {
                 return true;
             }
             else {
