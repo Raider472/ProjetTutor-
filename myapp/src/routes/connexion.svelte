@@ -40,7 +40,7 @@
     <br>
     <label>
         mot de passe
-        <input type="text" bind:value={mdp}>
+        <input type="password" bind:value={mdp}>
     </label>
     <br>
     <button on:click={connexion}>
