@@ -26,7 +26,7 @@
             echo json_encode($errors);
         }
         else {
-            //$DAO->insertUtilisateur($identifiants['login'], $identifiants['mdp'], (int)$identifiants['idCategorie']);
+            $DAO->insertUtilisateur($identifiants['login'], $identifiants['mdp'], (int)$identifiants['idCategorie']);
             echo json_encode("success");
         }
     }
