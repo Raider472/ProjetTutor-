@@ -64,4 +64,5 @@
         Categorie
         <input type="text" bind:value={categorie}>
     </label>
+    <a href="/interfacePub">TestInterfacePub</a>
 </section>

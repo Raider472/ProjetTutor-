@@ -1,5 +1,5 @@
 <?php
-    class Pubs {
+    class Pubs implements JsonSerializable {
         private int $id_pubs;
         private string $nom_pubs;
         private float $duree_pubs;
@@ -32,6 +32,14 @@
 
         public function setDuree_pubs($duree_pubs) {
             $this->duree_pubs = $duree_pubs;
+        }
+
+        public function jsonSerialize():mixed {
+            return [
+               "Id" => $this->id_pubs,
+               "Nom" => $this->nom_pubs,
+               "Duree" => $this->duree_pubs
+            ];
         }
     }
 ?>

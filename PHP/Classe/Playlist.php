@@ -1,7 +1,7 @@
 <?php
     require_once("./Pubs.php");
     require_once("./functionConnexion/ConnexionDocker.php");
-    class Playlist {
+    class Playlist implements JsonSerializable {
         private int $id_playlist;
         private string $nom_playlist;
         private $debut_date_playlist;
@@ -15,6 +15,7 @@
             $this->debut_date_playlist = $debut_date_playlist;
             $this->fin_date_playlist = $fin_date_playlist;
             $this->categorie_playlist = $categorie_playlist;
+            $this->tabPubs = $this->fetchPubs($id_playlist);
         }
 
         public function getId_playlist() {
@@ -59,6 +60,38 @@
 
         public function setCategorie_playlist($categorie) {
             $this->categorie_playlist = $categorie;
+        }
+
+        private function fetchPubs(int $idPlaylist): array {
+            $dbo = connexion();
+            $req = $dbo -> execSQL("SELECT * FROM PlaylistPubs Where id_playlist = $idPlaylist");
+            unset($dbo);
+            $pubs = [];
+            foreach($req as $lesPubs) {
+                $dbo = connexion();
+                $parametre = $lesPubs["id_pubs"];
+                $requete = $dbo -> execSQL("SELECT * FROM Pubs Where id_pubs = $parametre");
+                unset($dbo);
+                foreach($requete as $laPub) {
+                    $pubs[] = new Pubs(
+                        $laPub["id_pubs"],
+                        $laPub["nom_pubs"],
+                        $laPub["duree_pubs"]
+                    );
+                }
+            }
+            return $pubs;
+        }
+
+        public function jsonSerialize():mixed {
+            return [
+               "Id" => $this->id_playlist,
+               "Nom" => $this->nom_playlist,
+               "Debut" => $this->debut_date_playlist,
+               "Fin" => $this->fin_date_playlist,
+               "Categorie" => $this->categorie_playlist,
+               "Pubs" => $this->tabPubs
+            ];
         }
     }
 ?>
