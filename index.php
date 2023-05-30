@@ -42,6 +42,7 @@
 
     else if (isset($_GET["op"]) && $_GET["op"] === "affichagePubs") {
         $PlaylistDAO->fetchPlaylistById(1);
+        echo json_encode($PlaylistDAO);
     }
 
     else {

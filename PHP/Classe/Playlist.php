@@ -1,6 +1,6 @@
 <?php
-    require_once("./Pubs.php");
-    require_once("./functionConnexion/ConnexionDocker.php");
+    require_once("Pubs.php");
+    require_once("functionConnexion/ConnexionDocker.php");
     class Playlist implements JsonSerializable {
         private int $id_playlist;
         private string $nom_playlist;

@@ -71,4 +71,6 @@
     <button on:click={retourConnexion}>
         Deconnexion
     </button>
+    <br>
+    <a href="/interfacePub">TestInterfacePub</a>
 </section>
