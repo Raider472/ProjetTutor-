@@ -10,6 +10,7 @@
     let tailleMaxPlay: number
     let incrementation = 0
     let boolean = false
+    let timeOutId: ReturnType<typeof setTimeout>
 
     let nomPlaylist : string
     let nomPub = "rien"
@@ -36,14 +37,20 @@
 
     function startPlaylist() {
         boolean = true
-        bouclePlay(pubs[0].Duree, pubs)
+        bouclePlay(pubs)
     }
 
-    function bouclePlay(seconde: number, arrayPub: PubItem[]) {
+    function bouclePlay(arrayPub: PubItem[]) {
         if(boolean === true) {
+            console.log(incrementation)
             nomPub = arrayPub[incrementation].Nom
             incrementation++
-            bouclePlay(arrayPub[incrementation].Duree, arrayPub)
+            if (incrementation === pubs.length) {
+                incrementation = 0
+            }
+            timeOutId = setTimeout(() => {
+                bouclePlay(arrayPub);
+            }, arrayPub[incrementation].Duree * 1000);
         }
         else {
             nomPub = ""
@@ -53,6 +60,9 @@
 
     function stopBoucle() {
         boolean = false
+        nomPub = "Stop"
+        nomPlaylist = "Stop"
+        clearTimeout(timeOutId)
     }
 
     function test() {
