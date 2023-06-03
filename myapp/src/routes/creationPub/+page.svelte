@@ -8,39 +8,44 @@
 </script>
 
 <body>
-    <header>Ajout d'une playlist</header>
+    <header>Ajout d'une pub</header>
     <form id="pubForm">
         <label for="urlVideoInput">Vidéo par URL Internet</label>
         <input type="text" id="urlInput" name="urlVideoInput">
         <label for="pubsdispInput">Contenu disponible dans la base de données</label>
         <input type="text" id="pubsdispInput" name="pubsdispInput">
-        <table>
-            <tr>
-              <th>Colonne 1</th>
-              <th>Colonne 2</th>
-              <th>Colonne 3</th>
-            </tr>
-            <tr>
-              <td>Ligne 1, Cellule 1</td>
-              <td>Ligne 1, Cellule 2</td>
-              <td>Ligne 1, Cellule 3</td>
-            </tr>
-            <tr>
-              <td>Ligne 2, Cellule 1</td>
-              <td>Ligne 2, Cellule 2</td>
-              <td>Ligne 2, Cellule 3</td>
-            </tr>
-            <tr>
-              <td>Ligne 3, Cellule 1</td>
-              <td>Ligne 3, Cellule 2</td>
-              <td>Ligne 3, Cellule 3</td>
-            </tr>
-            <tr>
-              <td>Ligne 4, Cellule 1</td>
-              <td>Ligne 4, Cellule 2</td>
-              <td>Ligne 4, Cellule 3</td>
-            </tr>
+        <div id="tabContenu">
+            <table>
+                <tr>
+                    <th>Pub textuelle</th>
+                    <th>Pub imagée</th>
+                    <th>Pub vidéo</th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
           </table>
+        <div id="boutonContenu">
+            <button type="submit">Confirmer</button>
+            <button type="submit">Retour</button>
+        </div>
 
     </form>
     
@@ -51,14 +56,43 @@
     body {
         background-color: #9B9B9B;
         font-family: 'Roboto', sans-serif;
+        text-align: center;
     }
     header {
-        text-align: center;
-        padding-bottom: 10%;
+        font-size: 2em;
+        padding-bottom: 5%;
+    }
+    input {
+        display : flex;
+        justify-content: center;
+        margin: 0 auto 2% auto;
+        width: 595px;
+        height: 34px;
+    }
+    #tabContenu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 25vh;
     }
     table,td {
         background: #E3E3E3;
         border: 1px solid #333;
+    }
+    td {
+        padding: 30px 100px 30px 100px;
+    }
+    #boutonContenu {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    #boutonContenu button {
+      margin: 0 10px;
+      width: 287.11px;
+      height: 30.02px;
     }
     
 </style>
