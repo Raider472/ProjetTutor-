@@ -34,27 +34,26 @@
 <section>
   <div id="div_page">
     <div id="div_logo">
-      <header class="tete" id="nomApp" />
+      <header class="tete" id="nomApp">
+        <p id="nom_app">PlaylistsAPI</p>
+      </header>
       <img id="logo" src="" alt="" />
       <br />
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
-        commodi eligendi, eos ex laborum magni molestiae necessitatibus, nisi
-        odio reprehenderit sint temporibus voluptas, voluptatibus. Esse
-        explicabo fugit quidem. Ipsam, possimus.
+        Diffusez vos pubs sur un ou plusieurs terminaux avec vos playlists personnalisées !      
       </p>
     </div>
     <div id="div_connexion">
       <header class="tete" id="nomPage" />
       <div id="int">
         <div id="div_login" class="tool_connexion">
-          <label class="label" id="lab_login" for="edt_login">login :</label>
+          <label class="label" id="lab_login" for="edt_login">Login :</label>
           <br /><br />
           <input type="text" id="edt_login" bind:value={login} />
         </div>
         <br />
         <div id="div_mdp" class="tool_connexion">
-          <label class="label" for="edt_mdp"> mot de passe : </label>
+          <label class="label" for="edt_mdp"> Mot de passe : </label>
           <br /><br />
           <input type="password" id="edt_mdp" bind:value={mdp} />
         </div>
@@ -70,20 +69,18 @@
 
 <style>
   section {
-    position: absolute;
-    top: 25%;
-    left: 25%;
-    right: 25%;
-    bottom: 25%;
+    margin: 3em 3em 3em 3em;
   }
+
   #logo {
+    margin-top: 10px;
     height: 150px;
     width: 150px;
   }
   #div_page {
     margin: auto;
-    height: 500px;
-    width: 1000px;
+    height: 30em;
+    width: 70em;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -100,12 +97,15 @@
   }
 
   #int {
-    margin-left: 200px;
-    margin-top: 100px;
+    margin: 15% 20% 20% 35%;
   }
 
   #btn_connexion {
     margin-left: 50px;
+    border-radius: 30px;
+    border: 1px solid #888888;
+    background-color: #888888;
+    color: #FFFFFF;
   }
 
   .tool_connexion {
@@ -113,8 +113,10 @@
 
   #div_logo {
     height: 100%;
-    width: 40%;
+    width: 35%;
     background-color: #888888;
+    color: #FFFFFF;
+    text-align: center;
   }
 
   .tete {
