@@ -8,7 +8,7 @@
 </script>
 
 <body>
-    <header>Ajout d'une pub</header>
+    <header>Ajout d'une publicité</header>
     <form id="pubForm">
         <label for="urlVideoInput">Vidéo par URL Internet</label>
         <input type="search" id="urlInput" name="urlVideoInput">
