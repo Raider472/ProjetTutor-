@@ -9,6 +9,7 @@ node_modules
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 myapp\.svelte-kit\ambient.d.ts
+myapp\.svelte-kit\generated\server\internal.js
 myapp\.svelte-kit\route_meta_data.json
 myapp\.svelte-kit\types\src\routes\$types.d.ts
 myapp\.svelte-kit\types\src\routes\accueil\$types.d.ts
