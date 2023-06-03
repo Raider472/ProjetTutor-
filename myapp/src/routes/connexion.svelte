@@ -35,7 +35,7 @@
   <div id="div_page">
     <div id="div_logo">
       <header class="tete" id="nomApp">
-        <p id="nom_app">PlaylistsAPI</p>
+        <p id="titre_app">PlaylistsAPI</p>
       </header>
       <img id="logo" src="" alt="" />
       <br />
@@ -56,6 +56,8 @@
           <label class="label" for="edt_mdp"> Mot de passe : </label>
           <br /><br />
           <input type="password" id="edt_mdp" bind:value={mdp} />
+          <br>
+          <a href="">Mot de passe oublié</a>
         </div>
         <div id="div_bouton" class="tool_connexion">
           <br />
@@ -72,6 +74,15 @@
     margin: 3em 3em 3em 3em;
   }
 
+  a {
+    color: burlywood;
+  }
+
+  a:hover {
+    color: #FFFFFF;
+    font-weight: bolder;
+  }
+
   #logo {
     margin-top: 10px;
     height: 150px;
@@ -79,6 +90,7 @@
   }
   #div_page {
     margin: auto;
+    margin-top: 0;
     height: 30em;
     width: 70em;
     display: flex;
@@ -92,7 +104,9 @@
 
   #div_connexion {
     width: 60%;
-    height: 100%;
+    height: 80%;
+    padding-top: 3em;
+    padding-bottom: 3em;
     background-color: #3c3c3c;
   }
 
@@ -119,12 +133,16 @@
     text-align: center;
   }
 
-  .tete {
-    padding: 25px;
-  }
-
   #nomApp {
     background-color: #3c3c3c;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+  }
+
+  #titre_app {
+    font-size: 24;
+    font-weight: bolder;
   }
 
   #nomPage {
