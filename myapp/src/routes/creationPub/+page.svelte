@@ -11,9 +11,9 @@
     <header>Ajout d'une pub</header>
     <form id="pubForm">
         <label for="urlVideoInput">Vidéo par URL Internet</label>
-        <input type="text" id="urlInput" name="urlVideoInput">
+        <input type="search" id="urlInput" name="urlVideoInput">
         <label for="pubsdispInput">Contenu disponible dans la base de données</label>
-        <input type="text" id="pubsdispInput" name="pubsdispInput">
+        <input type="search" id="pubsdispInput" name="pubsdispInput">
         <div id="tabContenu">
             <table>
                 <tr>
@@ -68,6 +68,12 @@
         margin: 0 auto 2% auto;
         width: 595px;
         height: 34px;
+    }
+    #urlInput {
+        background: url(../../assets/icons8-search-50.png) no-repeat right/5% rgb(255, 255, 255);
+    }
+    #pubsdispInput {
+        background: url(../../assets/icons8-search-50.png) no-repeat right/5% rgb(255, 255, 255);
     }
     #tabContenu {
         display: flex;
