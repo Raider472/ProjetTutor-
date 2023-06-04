@@ -20,7 +20,7 @@
       .then(function (json) {
         console.log(json);
         if (json === true) {
-          window.location.href = "/accueil";
+          window.location.href = "/playlistAccueil";
         } else {
           labelMdp = "erreur connexion";
         }
@@ -44,7 +44,6 @@
       </p>
     </div>
     <div id="div_connexion">
-      <header class="tete" id="nomPage" />
       <div id="int">
         <div id="div_login" class="tool_connexion">
           <label class="label" id="lab_login" for="edt_login">Login :</label>
@@ -57,7 +56,7 @@
           <br /><br />
           <input type="password" id="edt_mdp" bind:value={mdp} />
           <br>
-          <a href="">Mot de passe oublié</a>
+          <a href="mdpOublie.svelte">Mot de passe oublié</a>
         </div>
         <div id="div_bouton" class="tool_connexion">
           <br />
@@ -120,9 +119,6 @@
     border: 1px solid #888888;
     background-color: #888888;
     color: #FFFFFF;
-  }
-
-  .tool_connexion {
   }
 
   #div_logo {
