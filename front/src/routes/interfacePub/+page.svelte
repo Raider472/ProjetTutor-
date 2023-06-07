@@ -46,11 +46,18 @@
         if(boolean === true) {
             console.log(incrementation)
             nomPub = arrayPub[incrementation].Nom
+            console.log(arrayPub[incrementation].TypeFichier.CategorieFichier.TypeContenu)
             if(arrayPub[incrementation].TypeFichier.CategorieFichier.TypeContenu === "Image") {
                 let nomImage = arrayPub[incrementation].Nom.replace(/ /g, '_')
                 let extension = arrayPub[incrementation].TypeFichier.TypeDeFichier
                 let src = "./src/lib/assets/" + nomImage + extension
                 contenuPubs = "<img src = \"" + src + "\" />"
+            } else if (arrayPub[incrementation].TypeFichier.CategorieFichier.TypeContenu === "Vidéo") {
+                let nomVideo= arrayPub[incrementation].Nom.replace(/ /g, '_')
+                let extension = arrayPub[incrementation].TypeFichier.TypeDeFichier
+                let src = "./src/lib/assets/" + nomVideo + extension
+                let extensionSansPoint = extension.replace(/./g, '');
+                contenuPubs = "<video width=\"800\" height=\"600\" controls autoplay> <source src = \"" + src  + "\"" + "type = video/mp4 \"\"></video>";
             }
             else {
                 contenuPubs =   arrayPub[incrementation].TypeFichier.NomFormat
@@ -71,9 +78,10 @@
 
     function stopBoucle() {
         boolean = false
-        nomPub = "Stop"
+        /*nomPub = "Stop"
         nomPlaylist = "Stop"
-        contenuPubs = "stop"
+        contenuPubs = "stop"*/
+
         clearTimeout(timeOutId)
     }
 
