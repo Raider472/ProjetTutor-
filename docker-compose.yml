@@ -8,7 +8,7 @@ services:
     ports: 
       - 8100:80
     volumes:
-      - ./:/var/www/html/
+      - ./api:/var/www/html/
 
   db_api: 
     image: mysql
