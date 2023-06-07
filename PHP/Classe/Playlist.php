@@ -76,7 +76,8 @@
                     $pubs[] = new Pubs(
                         $laPub["id_pubs"],
                         $laPub["nom_pubs"],
-                        $laPub["duree_pubs"]
+                        $laPub["duree_pubs"],
+                        $laPub["type_fichier"],
                     );
                 }
             }

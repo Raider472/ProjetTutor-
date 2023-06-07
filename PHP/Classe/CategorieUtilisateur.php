@@ -16,7 +16,7 @@
 
         private function fetchCategorieById($id) {
             $dbo = connexion();
-            $req = $dbo -> execSQL("SELECT * FROM CategorieUtilisateur WHERE id_categorie_utilisateur =" . $id);
+            $req = $dbo -> execSQL("SELECT * FROM CategorieUtilisateur WHERE id_categorie_utilisateur = $id");
             unset($dbo);
             foreach($req as $lesrequeteTab) {
                 $this->id_categorie_utilisateur = $lesrequeteTab["id_categorie_utilisateur"];
