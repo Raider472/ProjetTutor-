@@ -5,12 +5,15 @@
         private string $nom_pubs;
         private float $duree_pubs;
 
+        private string $description_pubs;
+
         private TypeFichier $type_fichier;
 
-        public function __construct($id_pubs, $nom_pubs, $duree_pubs, $type_fichier = ".txt") {
+        public function __construct($id_pubs, $nom_pubs, $duree_pubs, $description_pubs, $type_fichier = ".txt") {
             $this->id_pubs = $id_pubs;
             $this->nom_pubs = $nom_pubs;
             $this->duree_pubs = $duree_pubs;
+            $this->description_pubs = $description_pubs;
             $this->type_fichier = new TypeFichier($type_fichier);
         }
 
@@ -26,6 +29,10 @@
             return $this->duree_pubs;
         }
 
+        public function getDesc_pubs() {
+            return $this->description_pubs;
+        }
+
         public function setId_pubs($id_pubs) {
             $this->id_pubs = $id_pubs;
         }
@@ -38,11 +45,17 @@
             $this->duree_pubs = $duree_pubs;
         }
 
+        public function setDesc_pubs($description_pubs) {
+            $this->description_pubs = $description_pubs;
+        }
+
+
         public function jsonSerialize():mixed {
             return [
                "Id" => $this->id_pubs,
                "Nom" => $this->nom_pubs,
                "Duree" => $this->duree_pubs,
+               "Desription" => $this->description_pubs,
                "TypeFichier" => $this->type_fichier
             ];
         }

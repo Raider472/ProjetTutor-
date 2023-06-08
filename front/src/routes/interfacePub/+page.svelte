@@ -42,7 +42,7 @@
                 contenuPubs = `<video width="800" height="600" controls autoplay><source src = ${src} type = video/${extensionSansPoint}></video>`;
             }
             else {
-                contenuPubs = arrayPub[incrementation].TypeFichier.NomFormat
+                contenuPubs = arrayPub[incrementation].Desription
             }
             timeOutId = window.setTimeout(() => {
                 bouclePlay(arrayPub);
