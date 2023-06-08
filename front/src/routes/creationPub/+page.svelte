@@ -1,15 +1,34 @@
 <script lang="ts">
-    const youtubeUrlRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/;
-    const urlVideoInput = document.getElementById('urlInput');
+    const youtubeUrlRegex = /^(?:(?:https?:\/\/)?(?:www\.)?)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})(?:\S+)?$/;
+    let urlVideoInput = '';
+    let isValidUrl = false;
+
+    console.log(urlVideoInput);
+
+    function validationUrlVideo(event : KeyboardEvent) {
+    if (event.key === "Enter") {
+      isValidUrl = youtubeUrlRegex.test(urlVideoInput);
+      console.log(isValidUrl);
+    }
+  }
+
+
 </script>
 
 <body>
     <header>Ajout d'une publicité</header>
     <form id="pubForm">
         <label for="urlVideoInput">Vidéo par URL Internet</label>
-        <input type="search" id="urlInput" name="urlVideoInput">
+        <input type="search" id="urlVideoInput" bind:value={urlVideoInput} on:keyup={validationUrlVideo}/>
+
+        {#if isValidUrl}
+            <p class="valid-url">Adresse URL valide</p>
+        {:else}
+            <p class="invalid-url">Erreur : Adresse URL invalide</p>
+        {/if}
+
         <label for="pubsdispInput">Contenu disponible dans la base de données</label>
-        <input type="search" id="pubsdispInput" name="pubsdispInput">
+        <input>
         <div id="tabContenu">
             <table>
                 <tr>
@@ -65,18 +84,18 @@
         width: 595px;
         height: 34px;
     }
-    #urlInput {
-        background: url(../../assets/icons8-search-50.png) no-repeat right/5% rgb(255, 255, 255);
+    /* #urlInput {
+        background: url(../../static/icons8-search-50.png) no-repeat right/5% rgb(255, 255, 255);
     }
     #pubsdispInput {
-        background: url(../../assets/icons8-search-50.png) no-repeat right/5% rgb(255, 255, 255);
-    }
+        background: url(../../../static/icons8-search-50.png) no-repeat right/5% rgb(255, 255, 255);
+    } */
     #tabContenu {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 25vh;
+        height: 35vh;
     }
     table,td {
         background: #E3E3E3;
