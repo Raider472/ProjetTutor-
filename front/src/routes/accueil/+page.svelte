@@ -1,76 +1,60 @@
-<script lang="ts" async>
-    let url = "http://localhost:8100/"
-    let pseudo = ""
-    let mdp = ""
-    let categorie = ""
-    function RecevoirJson(): void {
-        fetch(url)
-            .then(function (response) {
-                if(response.ok) {
-                    return response.json()
-                }
-            })
-            .catch(function (erreur) {
-                alert(erreur.message)
-            })
-            .then(function (utilisateur) {
-                console.log(utilisateur)
-            })
+<title>Title</title>
+
+<div id="pageAc">
+    <div class="parent">
+        <div class="entete-gauche">
+            NOM APP
+        </div>
+        <div class="entete-droit">Bienvenue</div>
+        <div class="corps-gauche">
+        </div>
+        <div class="corps-droit"></div>
+    </div>
+</div>
+
+<style>
+
+    .parent {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        height: 100vh;
     }
 
-    function retourConnexion() {
-        window.location.href = '/'
+    .entete-gauche {
+        grid-area: 1 / 1 / 2 / 3;
+        background-color: #3c3c3c;
+        color: white;
     }
 
-    function envoyerDonnées(): void {
-        const data = new FormData();
-        data.append("login", pseudo)
-        data.append("mdp", mdp)
-        data.append("idCategorie", categorie)
-        fetch(url+"?op=ajout", {
-            method: 'POST',
-            body: data
-        })
-            .then(function (response) {
-                if(response.ok) {
-                    return response.json()
-                }
-            })
-            .then(function (json) {
-                console.log(json)
-            })
-            .catch(function (erreur) {
-                alert(erreur.message)
-            })
+    .entete-droit {
+        grid-area: 1 / 3 / 2 / 9;
+        background-color: #888888;
+        color: white;
     }
-</script>
 
-<h1>Test API</h1>
-<section>
-    <button on:click={RecevoirJson}>
-        Reçevoir données
-    </button>
-    <button on:click={envoyerDonnées}>
-        Envoyer Données
-    </button>
-    <br>
-    <label>
-        pseudo
-        <input type="text" bind:value={pseudo}>
-    </label>
-    <br>
-    <label>
-        mot de passe
-        <input type="text" bind:value={mdp}>
-    </label>
-    <br>
-    <label>
-        Categorie
-        <input type="text" bind:value={categorie}>
-    </label>
-    <button on:click={retourConnexion}>
-        Deconnexion
-    </button>
-    <br>
-    <a href="/interfacePub">TestInterfacePub</a>
-</section>
+    .corps-gauche {
+        grid-area: 2 / 1 / 6 / 3;
+        background-color: #888888;
+        height: 100%;
+        text-align: center;
+    }
+    .corps-gauche input{
+        width: 75%;
+        height: 5%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        border-radius: 50px;
+        font-size: 24px;
+        background-color: #4E4E4E;
+        color: white;
+    }
+
+    .corps-droit {
+        grid-area: 2 / 3 / 6 / 9;
+        background-color: #3c3c3c;
+        height: 100%;
+    }
+</style>

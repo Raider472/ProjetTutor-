@@ -14,7 +14,7 @@
     let bouclePubs = false
     let timeOutId: number | null = null
 
-    let nomPlaylist : string
+    let nomPlaylist = playlist.Nom
     let nomPub = "rien"
     let contenuPubs = ""
 
@@ -25,33 +25,32 @@
 
     function bouclePlay(arrayPub: PubItem[]) {
         if(bouclePubs === true) {
-            console.log(incrementation)
             nomPub = arrayPub[incrementation].Nom
-            console.log(arrayPub[incrementation].TypeFichier.CategorieFichier.TypeContenu)
 
             if(arrayPub[incrementation].TypeFichier.CategorieFichier.TypeContenu === "Image") {
                 let nomImage = arrayPub[incrementation].Nom.replace(/ /g, '_')
                 let extension = arrayPub[incrementation].TypeFichier.TypeDeFichier
-                let src = "./src/lib/assets/" + nomImage + extension
-                contenuPubs = "<img src = \"" + src + "\" />"
+                let src = "http://localhost:8100/PHP/assets/" + nomImage + extension
+                contenuPubs = `<img src = ${src} />`
             } 
             else if (arrayPub[incrementation].TypeFichier.CategorieFichier.TypeContenu === "Vidéo") {
                 let nomVideo= arrayPub[incrementation].Nom.replace(/ /g, '_')
                 let extension = arrayPub[incrementation].TypeFichier.TypeDeFichier
-                let src = "./src/lib/assets/" + nomVideo + extension
-                let extensionSansPoint = extension.replace(/./g, '');
-                contenuPubs = "<video width=\"800\" height=\"600\" controls autoplay> <source src = \"" + src  + "\"" + "type = video/mp4 \"\"></video>";
+                let src = "http://localhost:8100/PHP/assets/" + nomVideo + extension
+                let extensionSansPoint = extension.substring(1)
+                console.log(extensionSansPoint)
+                contenuPubs = `<video width="800" height="600" controls autoplay><source src = ${src} type = video/${extensionSansPoint}></video>`;
             }
             else {
                 contenuPubs = arrayPub[incrementation].TypeFichier.NomFormat
             }
+            timeOutId = window.setTimeout(() => {
+                bouclePlay(arrayPub);
+            }, arrayPub[incrementation].Duree * 1000);
             incrementation++
             if (incrementation === arrayPub.length) {
                 incrementation = 0
             }
-            timeOutId = window.setTimeout(() => {
-                bouclePlay(arrayPub);
-            }, arrayPub[incrementation].Duree * 1000);
         }
         else {
             nomPub = ""
