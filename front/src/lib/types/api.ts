@@ -12,6 +12,7 @@ export interface PubItem {
     Id: number;
     Nom: string;
     Duree: number;
+    Desription: string;
     TypeFichier: TypeFichier;
 }
 

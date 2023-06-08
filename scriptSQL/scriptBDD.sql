@@ -47,6 +47,7 @@ CREATE TABLE Pubs (
     id_pubs INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nom_pubs VARCHAR(100),
     duree_pubs DECIMAL(4,2) DEFAULT 0, -- En secondes.
+    description_pubs VARCHAR(500) DEFAULT "",
     type_fichier VARCHAR(15) NOT NULL REFERENCES TypeFichier (type_fichier)
 );
 
@@ -79,7 +80,7 @@ CREATE TABLE PlaylistTerminaux (
     PRIMARY KEY(id_terminal, id_playlist),
     id_playlist INT NOT NULL REFERENCES Playlist(id_playlist),
     id_terminal INT NOT NULL REFERENCES Terminal(id_terminal),
-        nbr_de_fois_jouee_playlist INT DEFAULT 0,
+    nbr_de_fois_jouee_playlist INT DEFAULT 0,
     playlist_loop BOOLEAN DEFAULT false
 );
 
@@ -100,7 +101,7 @@ INSERT INTO Utilisateur VALUES (1, 'sudo', AES_ENCRYPT('sudo', 'YepaGaming'), 1)
 INSERT INTO CategorieUtilisateur VALUES (1, 'super_admin'), (2, 'admin'), (3, 'opérateur'), (4,'utilisateur');
 INSERT INTO Playlist VALUES (1, 'Outilages', '2022-03-10', '2022-03-17', 'Outilages'),(2, 'Maroquinerie', '2022-03-23', '2022-03-30', 'Maroquinerie');
 INSERT INTO AuditTrail VALUES (1, 1, '2022-03-07 15:47:12', 5, 3), (2, 2, '2022-03-19 11:23:43', 5, 3);
-INSERT INTO Pubs VALUES (1, 'Nouveau sac 1', 13, ".txt"), (2, 'Sets tournevis 1', 5, ".png"), (3, 'Nouveau jouet 1', 5, ".txt"), (4, 'Promotion Fromagerie', 13, ".mp4"), (5, 'Promotion Boucherie', 5, ".txt");
+INSERT INTO Pubs VALUES (1, 'Nouveau sac 1', 5, "Venez acheter les nouveaux sacs yepa", ".txt"), (2, 'Sets tournevis 1', 5, "", ".png"), (3, 'Nouveau jouet 1', 5, "Le jouet n°1 est à 50% de réduction aujourd'hui", ".txt"), (4, 'Promotion Fromagerie', 13, "", ".mp4"), (5, 'Promotion Boucherie', 5, "", ".txt");
 INSERT INTO Terminal VALUES (1, 'Samsung modèle X', '00:1P:56:11:3B:L7', 1, 2, 'Outilages'), (2, 'Samsung modèle X', '01:3R:34:67:9Y:J0', 1, 1, 'Fromagerie'), (3, 'Samsung modèle X', '78:3K:89:32:5T:B5', 1, 4, 'Maroquinerie');
 INSERT INTO TypeTerminal VALUES (1, 'Écran de télévision'), (2, 'Ordinateur'), (3, 'Smartphone'), (4, 'Autres');
 INSERT INTO EmplacementTerminal VALUES (1, 'Fromagerie'), (2, 'Outilages'), (3, 'Boucherie'), (4, 'Prêt-à-porter'), (5, 'Poissonnerie'), (6, 'Boulangerie'), (7, 'Sports'), (8, 'Multimédia');
