@@ -3,7 +3,7 @@
 <div id="pageAc">
     <div class="parent">
         <div class="entete-gauche">
-            NOM APP
+            PlaylistAPI
         </div>
         <div class="entete-droit">Bienvenue</div>
         <div class="corps-gauche">
@@ -26,12 +26,16 @@
     .entete-gauche {
         grid-area: 1 / 1 / 2 / 3;
         background-color: #3c3c3c;
+        text-align: center;
+        font-size: 4em;
         color: white;
     }
 
     .entete-droit {
         grid-area: 1 / 3 / 2 / 9;
         background-color: #888888;
+        text-align: center;
+        font-size: 7em;
         color: white;
     }
 
