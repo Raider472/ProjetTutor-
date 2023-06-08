@@ -1,14 +1,14 @@
-version: '3.8'
+version: '3.9'
 
 services:
   php:
     build: 
       context: .
-      dockerfile: Dockerfile
+      dockerfile: docker/php/Dockerfile
     ports: 
       - 8100:80
     volumes:
-      - ./:/var/www/html/
+      - ./api:/var/www/html/
 
   db_api: 
     image: mysql
@@ -35,3 +35,15 @@ services:
     environment:
       - PMA_HOST=db_api
       - PMA_ARBITRARY=1
+
+  front:
+    build: 
+      context: .
+      dockerfile: docker/front/Dockerfile
+    ports:
+      - 5173:5173
+    volumes:
+      - ./front:/home/node/front
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
