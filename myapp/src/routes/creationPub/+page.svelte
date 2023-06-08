@@ -1,10 +1,6 @@
 <script lang="ts">
-
-
-
-
-
-
+    const youtubeUrlRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/;
+    const urlVideoInput = document.getElementById('urlInput');
 </script>
 
 <body>
