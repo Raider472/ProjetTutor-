@@ -1,6 +1,10 @@
 <script lang="ts">
-    import type { PlaylistItem, PubItem, TypeFichier, CategorieFichier } from "$lib/types/api"
+    import type {PubItem} from "$lib/types/api"
     import { onDestroy } from "svelte";
+    import { PUBLIC_API_ASSETS_URL } from '$env/static/public';
+
+    import ImageInterfacePub from "$lib/components/ImageInterfacePub.svelte"
+    import VideoInterfacePub from "$lib/components/VideoInterfacePub.svelte"
 
     export let data
     console.log(data)
@@ -16,7 +20,11 @@
 
     let nomPlaylist = playlist.Nom
     let nomPub = "rien"
-    let contenuPubs = ""
+
+    let src : string
+    let extensionSansPoint : string
+    let typePubs : string
+    let contenuPubs : string
 
     function startPlaylist() {
         bouclePubs = true
@@ -26,20 +34,18 @@
     function bouclePlay(arrayPub: PubItem[]) {
         if(bouclePubs === true) {
             nomPub = arrayPub[incrementation].Nom
+            typePubs = arrayPub[incrementation].TypeFichier.CategorieFichier.TypeContenu
 
             if(arrayPub[incrementation].TypeFichier.CategorieFichier.TypeContenu === "Image") {
                 let nomImage = arrayPub[incrementation].Nom.replace(/ /g, '_')
                 let extension = arrayPub[incrementation].TypeFichier.TypeDeFichier
-                let src = "http://localhost:8100/PHP/assets/" + nomImage + extension
-                contenuPubs = `<img src = ${src} />`
+                src = PUBLIC_API_ASSETS_URL + nomImage + extension
             } 
             else if (arrayPub[incrementation].TypeFichier.CategorieFichier.TypeContenu === "Vidéo") {
                 let nomVideo= arrayPub[incrementation].Nom.replace(/ /g, '_')
                 let extension = arrayPub[incrementation].TypeFichier.TypeDeFichier
-                let src = "http://localhost:8100/PHP/assets/" + nomVideo + extension
-                let extensionSansPoint = extension.substring(1)
-                console.log(extensionSansPoint)
-                contenuPubs = `<video width="800" height="600" controls autoplay><source src = ${src} type = video/${extensionSansPoint}></video>`;
+                src = PUBLIC_API_ASSETS_URL + nomVideo + extension
+                extensionSansPoint = extension.substring(1)
             }
             else {
                 contenuPubs = arrayPub[incrementation].Desription
@@ -104,5 +110,11 @@
     <br>
     {nomPub}
     <br>
-    {@html contenuPubs}
+    {#if typePubs === "Image"}
+        <ImageInterfacePub source={src}/>
+    {:else if typePubs === "Vidéo"}
+        <VideoInterfacePub source={src} videoExtension={extensionSansPoint}/>
+    {:else if typePubs === "Texte"}
+        <p>{contenuPubs}</p>
+    {/if}
 </section>
