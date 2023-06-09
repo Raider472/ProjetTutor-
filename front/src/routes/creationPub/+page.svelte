@@ -3,14 +3,10 @@
     let urlVideoInput = '';
     let isValidUrl = false;
 
-    console.log(urlVideoInput);
-
-    function validationUrlVideo(event : KeyboardEvent) {
-    if (event.key === "Enter") {
+    function validationUrlVideo() {
       isValidUrl = youtubeUrlRegex.test(urlVideoInput);
       console.log(isValidUrl);
     }
-  }
 
 
 </script>
@@ -19,7 +15,7 @@
     <header>Ajout d'une publicité</header>
     <form id="pubForm">
         <label for="urlVideoInput">Vidéo par URL Internet</label>
-        <input type="search" id="urlVideoInput" bind:value={urlVideoInput} on:keyup={validationUrlVideo}/>
+        <input id="urlVideoInput" bind:value={urlVideoInput} on:change={validationUrlVideo}/>
 
         {#if isValidUrl}
             <p class="valid-url">Adresse URL valide</p>
@@ -28,7 +24,7 @@
         {/if}
 
         <label for="pubsdispInput">Contenu disponible dans la base de données</label>
-        <input>
+        <input type="search" id="pubsdispInput">
         <div id="tabContenu">
             <table>
                 <tr>
