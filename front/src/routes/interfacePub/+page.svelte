@@ -5,6 +5,7 @@
 
     import ImageInterfacePub from "$lib/components/ImageInterfacePub.svelte"
     import VideoInterfacePub from "$lib/components/VideoInterfacePub.svelte"
+    import { fade } from "svelte/transition";
 
     export let data
     console.log(data)
@@ -12,6 +13,8 @@
     const playlist = data.playlistItem[0]
     const pubs = playlist.Pubs
 
+    const inTransition = {delay:250}
+    const outTransition = {duration:250}
 
     let tailleMaxPlay: number
     let incrementation = 0
@@ -110,11 +113,17 @@
     <br>
     {nomPub}
     <br>
-    {#if typePubs === "Image"}
-        <ImageInterfacePub source={src}/>
-    {:else if typePubs === "Vidéo"}
-        <VideoInterfacePub source={src} videoExtension={extensionSansPoint}/>
-    {:else if typePubs === "Texte"}
-        <p>{contenuPubs}</p>
-    {/if}
+    <main>
+        {#if typePubs === "Image"}
+            <div in:fade={inTransition} out:fade={outTransition}>
+                <ImageInterfacePub source={src} {nomPub}/>
+            </div>
+        {:else if typePubs === "Vidéo"}
+            <div in:fade={inTransition} out:fade={outTransition}>
+                <VideoInterfacePub source={src} videoExtension={extensionSansPoint}/>
+            </div>
+        {:else if typePubs === "Texte"}
+            <p in:fade={inTransition} out:fade={outTransition}>{contenuPubs}</p>
+        {/if}
+    </main>
 </section>

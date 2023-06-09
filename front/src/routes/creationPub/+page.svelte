@@ -3,20 +3,17 @@
     let urlVideoInput = '';
     let isValidUrl = false;
 
-    function validationUrlVideo() {
-      isValidUrl = youtubeUrlRegex.test(urlVideoInput);
-      console.log(isValidUrl);
-    }
-
-
+    $: isValidUrl = youtubeUrlRegex.test(urlVideoInput);
 </script>
 
 <body>
     <header>Ajout d'une publicité</header>
     <form id="pubForm">
         <label for="urlVideoInput">Vidéo par URL Internet</label>
-        <input id="urlVideoInput" bind:value={urlVideoInput} on:change={validationUrlVideo}/>
+        <input id="urlVideoInput" bind:value={urlVideoInput}/>
 
+        <!--Input type file-->
+        
         {#if isValidUrl}
             <p class="valid-url">Adresse URL valide</p>
         {:else}
