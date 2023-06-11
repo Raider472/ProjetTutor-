@@ -22,7 +22,8 @@
                     $lesPlaylist["nom_playlist"],
                     $lesPlaylist["debut_date_playlist"],
                     $lesPlaylist["fin_date_playlist"],
-                    $lesPlaylist["categorie_playlist"]
+                    $lesPlaylist["categorie_playlist"],
+                    $lesPlaylist["playing"],
                 );
             }
             $this->setArrayTab($playlist);

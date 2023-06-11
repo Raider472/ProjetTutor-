@@ -53,6 +53,12 @@
         
     }
 
+    else if(isset($_POST["status"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
+        
+        $dbo = connexion();
+        $req = $dbo->execSQL("UPDATE Playlist SET playing = :status", ["status" => ($_POST["status"] ?? "false") === "true" ? 1 : 0]);
+    }
+
     else {
         $UtilisateurDAO->fetchAll();
     

@@ -4,7 +4,7 @@ export interface PlaylistItem {
     Debut: string;
     Fin: string;
     Categorie: string;
-    continuerLoop: boolean;
+    Playing: boolean;
     Pubs: PubItem[];
 }
 

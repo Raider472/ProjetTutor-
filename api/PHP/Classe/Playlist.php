@@ -7,14 +7,17 @@
         private $debut_date_playlist;
         private $fin_date_playlist;
         private string $categorie_playlist;
+        private bool $playing;
+
         private array $tabPubs;
 
-        public function __construct($id_playlist, $nom_playlist, $debut_date_playlist, $fin_date_playlist, $categorie_playlist) {
+        public function __construct($id_playlist, $nom_playlist, $debut_date_playlist, $fin_date_playlist, $categorie_playlist, $playing) {
             $this->id_playlist = $id_playlist;
             $this->nom_playlist = $nom_playlist;
             $this->debut_date_playlist = $debut_date_playlist;
             $this->fin_date_playlist = $fin_date_playlist;
             $this->categorie_playlist = $categorie_playlist;
+            $this->playing = $playing;
             $this->tabPubs = $this->fetchPubs($id_playlist);
         }
 
@@ -40,6 +43,10 @@
 
         public function getTabPubs() {
             return $this->tabPubs;
+        }
+
+        public function getPlaying() {
+            return $this->playing;
         }
 
         public function setId_playlist($id) {
@@ -92,6 +99,7 @@
                "Debut" => $this->debut_date_playlist,
                "Fin" => $this->fin_date_playlist,
                "Categorie" => $this->categorie_playlist,
+               "Playing" => $this->playing,
                "Pubs" => $this->tabPubs
             ];
         }

@@ -1,3 +1,8 @@
+<script>
+
+    import { enhance } from "$app/forms";
+
+</script>
 <title>Accueil</title>
 
 <div id="pageAc">
@@ -21,7 +26,15 @@
             <input id="btn_modifier" type="button" value="modifier">
             <br>
             <input type="button" value="Historique">
-
+            <br>
+            <form use:enhance method="POST">
+                <input type="hidden" name="status" value="true">
+                <button type="submit">start</button>
+            </form>
+            <form use:enhance method="POST">
+                <input type="hidden" name="status" value="false">
+                <button type="submit">stop</button>
+            </form>
         </div>
         <div class="corps-droit"></div>
     </div>

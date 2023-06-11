@@ -1,17 +1,18 @@
 <script lang="ts">
     import type {PubItem} from "$lib/types/api"
-    import { onDestroy } from "svelte";
+    import { onDestroy, onMount } from "svelte";
     import { PUBLIC_API_ASSETS_URL } from '$env/static/public';
 
     import ImageInterfacePub from "$lib/components/ImageInterfacePub.svelte"
     import VideoInterfacePub from "$lib/components/VideoInterfacePub.svelte"
     import { fade } from "svelte/transition";
+    import { invalidateAll } from "$app/navigation";
+    import { browser } from "$app/environment";
 
     export let data
     console.log(data)
 
-    const playlist = data.playlistItem[0]
-    const pubs = playlist.Pubs
+    $: playlist = data.playlistItem[0]
 
     const inTransition = {delay:250}
     const outTransition = {duration:250}
@@ -20,8 +21,8 @@
     let incrementation = 0
     let bouclePubs = false
     let timeOutId: number | null = null
+    let pollingInterval: number | null = null
 
-    let nomPlaylist = playlist.Nom
     let nomPub = "rien"
 
     let src : string
@@ -31,7 +32,7 @@
 
     function startPlaylist() {
         bouclePubs = true
-        bouclePlay(pubs)
+        bouclePlay(playlist.Pubs)
     }
 
     function bouclePlay(arrayPub: PubItem[]) {
@@ -63,7 +64,6 @@
         }
         else {
             nomPub = ""
-            nomPlaylist = ""
         }
     }
 
@@ -72,44 +72,57 @@
         /*nomPub = "Stop"
         nomPlaylist = "Stop"
         contenuPubs = "stop"*/
+        console.log("stopped")
         if(timeOutId) {
             window.clearTimeout(timeOutId)
+            timeOutId = null
         }
     }
 
-    onDestroy(()=> {
-        if(timeOutId) {
-            window.clearTimeout(timeOutId)
+    function checkPlaying(isPlaying: boolean) {
+        if(!browser) {
+            return
         }
+        console.log("checkPlaying")
+        if(isPlaying) {
+            if(timeOutId) {
+                return
+            }
+            startPlaylist()
+        } else {
+            if(!timeOutId) {
+                return
+            }
+            stopBoucle()
+        }
+    }
+
+    $: checkPlaying(playlist.Playing)
+
+    onMount(() => {
+        pollingInterval = window.setInterval(() => {
+            invalidateAll()
+        }, 5000)
     })
 
-    function test() {
-        console.log(playlist)
-        console.log(pubs)
-        console.log(pubs[0].TypeFichier.NomFormat)
-        console.log(pubs[0].TypeFichier.TypeDeFichier)
-        console.log(pubs[0].TypeFichier.CategorieFichier)
-        let test = pubs[0].TypeFichier.CategorieFichier
-        console.log(test)
-        console.log(test.Id)
-        console.log(test.TypeContenu)
-        console.log(tailleMaxPlay)
-        console.log(incrementation)
-    }
+    onDestroy(() => {
+        if(timeOutId) {
+            window.clearTimeout(timeOutId)
+            timeOutId = null
+        }
+        if(pollingInterval) {
+            window.clearInterval(pollingInterval)
+            pollingInterval = null
+        }
+    })
 </script>
 
 <h1>Test Interface pubs</h1>
 
 <section>
     <h1>Test</h1>
-    <button on:click={test}>Test recevoir</button>
     <br>
-    <button on:click={startPlaylist}>start</button>
-    <br>
-    <button on:click={stopBoucle}>stop</button>
-    <br>
-    <br>
-    {nomPlaylist}
+    {playlist?.Nom ?? "Vide"}
     <br>
     {nomPub}
     <br>
