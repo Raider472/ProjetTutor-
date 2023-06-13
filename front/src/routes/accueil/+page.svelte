@@ -34,6 +34,13 @@
             <form use:enhance method="POST">
                 <input type="hidden" name="status" value="false">
                 <button type="submit">stop</button>
+                <br>
+                <label for="choixPlaylist">choix de playlist :</label>
+                <br>
+                <select id="choixPlaylist" name="playlistSelect">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
             </form>
         </div>
         <div class="corps-droit"></div>

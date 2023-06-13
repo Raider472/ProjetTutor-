@@ -6,6 +6,8 @@
     $UtilisateurDAO = new LesUtilisateurs();
     $PlaylistDAO = new LesPlaylists();
 
+    $idPlaylist = ((int)isset($_POST["playlistSelect"]) ? (int)$_POST["playlistSelect"] : 1); 
+
     if (isset($_GET["op"]) && $_GET["op"] === "ajout") {
         $identifiants['login'] = (isset($_POST['login'])?$_POST['login']:"");
         $identifiants['idCategorie'] = (isset($_POST['idCategorie'])?$_POST['idCategorie']:"");
@@ -41,22 +43,15 @@
     }
 
     else if (isset($_GET["op"]) && $_GET["op"] === "affichagePubs") {
-        $PlaylistDAO->fetchPlaylistById(1);
+        $PlaylistDAO->fetchPlaylistById($idPlaylist);
         echo json_encode($PlaylistDAO);
-        //$PlaylistDAO->getArrayTab()[0]->startLoop();
-        
-    }
-
-    else if (isset($_GET["op"]) && $_GET["op"] === "stopAffichagePubs") {
-        $PlaylistDAO->fetchPlaylistById(1);
-        $PlaylistDAO->getArrayTab()[0]->stopLoop();
-        
     }
 
     else if(isset($_POST["status"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
         
         $dbo = connexion();
         $req = $dbo->execSQL("UPDATE Playlist SET playing = :status", ["status" => ($_POST["status"] ?? "false") === "true" ? 1 : 0]);
+        $idPlaylist = (int)$_POST["playlistSelect"];
     }
 
     else {
