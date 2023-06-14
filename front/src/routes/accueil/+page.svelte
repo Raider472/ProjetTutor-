@@ -45,7 +45,8 @@
                     <button class="buttonTest" type="submit">stop</button>
                     <br>
                     <label class="buttonTest" for="choixPlaylist">Choix de playlist :</label>
-                    <br>
+                </form>
+                <form use:enhance method="POST">
                     <select class="buttonTest" id="choixPlaylist" name="playlistSelect">
                         <option value="1">1</option>
                         <option value="2">2</option>
