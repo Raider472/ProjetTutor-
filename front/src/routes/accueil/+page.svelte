@@ -1,6 +1,7 @@
 <script>
 
     import { enhance } from "$app/forms";
+    let user = 'NAE Gabriel';
 
 </script>
 <title>Accueil</title>
@@ -8,9 +9,11 @@
 <div id="pageAc">
     <div class="parent">
         <div class="entete-gauche">
-            NOM APP
+            <p>PlaylistAPI</p>
         </div>
-        <div class="entete-droit">Bienvenue</div>
+        <div class="entete-droit">
+            <p>Bienvenue, {user}</p>
+        </div>
         <div class="corps-gauche">
             <input id="btn_playlist" type="button" value="Playlists">
             <br>
@@ -19,35 +22,42 @@
             <input id="btn_terminaux" type="button" value="Terminaux">
             <br>
             <br>
-            <input id="btn_creer" type="button" value="crÃ©er">
+            <input id="btn_creer" type="button" value="Créer une playlist">
             <br>
-            <input id="btn_supprimer" type="button" value="supprimer">
+            <input id="btn_supprimer" type="button" value="Supprimer une playlist">
             <br>
-            <input id="btn_modifier" type="button" value="modifier">
+            <input id="btn_modifier" type="button" value="Modifier une playlist">
             <br>
-            <input type="button" value="Historique">
+            <input id="btn_historique" type="button" value="Historique d'une playlist">
             <br>
-            <form use:enhance method="POST">
-                <input type="hidden" name="status" value="true">
-                <button type="submit">start</button>
-            </form>
-            <form use:enhance method="POST">
-                <input type="hidden" name="status" value="false">
-                <button type="submit">stop</button>
-                <br>
-                <label for="choixPlaylist">choix de playlist :</label>
-                <br>
-                <select id="choixPlaylist" name="playlistSelect">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                </select>
-            </form>
+            
         </div>
-        <div class="corps-droit"></div>
+        <div class="corps-droit">
+            <div class="playlistDisplay">
+                <p class="titlePlaylist">Playlist</p>
+                <div class="testContents">
+                <form use:enhance method="POST">
+                    <input type="hidden" name="status" value="true">
+                    <button class="buttonTest" type="submit">start</button>
+                </form>
+                <form use:enhance method="POST">
+                    <input type="hidden" name="status" value="false">
+                    <button class="buttonTest" type="submit">stop</button>
+                    <br>
+                    <label class="buttonTest" for="choixPlaylist">Choix de playlist :</label>
+                    <br>
+                    <select class="buttonTest" id="choixPlaylist" name="playlistSelect">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                    </select>
+                </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
-<style>
+<style id="dark">
     .parent {
         display: grid;
         grid-template-columns: repeat(10, 1fr);
@@ -61,12 +71,25 @@
         grid-area: 1 / 1 / 2 / 3;
         background-color: #3c3c3c;
         color: white;
+        text-align: center;
+        font-size: 48px;
+    }
+
+    .entete-gauche > p {
+        margin-top: 2em;
     }
 
     .entete-droit {
         grid-area: 1 / 3 / 2 / 9;
         background-color: #888888;
         color: white;
+        text-align: left;
+        font-size: 48px;
+    }
+
+    .entete-droit > p {
+        margin-left: 2em;
+        margin-top: 2em;
     }
 
     .corps-gauche {
@@ -84,6 +107,42 @@
         font-size: 24px;
         background-color: #4E4E4E;
         color: white;
+    }
+
+    #btn_creer, #btn_modifier, #btn_supprimer, #btn_historique {
+        font-style: italic;
+    }
+
+    .playlistDisplay {
+        width: 75%;
+        height: 15%;
+        margin-left: 5em;
+        margin-top: 5em;
+        border-radius: 30px;
+        background-color: #d9d9d99d;
+        color: white;
+    }
+
+    .playlistDisplay .buttonTest {
+        width: 35%;
+        height: 5%;
+        margin-left: 65%;
+        margin-bottom: 5px;
+        border-radius: 50px;
+        font-size: 24px;
+        background-color: #4E4E4E;
+        color: white;
+    }
+
+    .playlistDisplay .testContents {
+        
+    }
+
+    .titlePlaylist {
+        text-align: left;
+        font-size: 38px;
+        margin-left: 2em;
+        padding-top: 1.5em;
     }
 
     .corps-droit {
