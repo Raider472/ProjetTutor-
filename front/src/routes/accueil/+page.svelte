@@ -59,6 +59,11 @@
 </div>
 
 <style id="dark">
+    #pageAc {
+        position: relative;
+        left: 200px;
+        margin: -10px 0 0 0;
+    }
     .parent {
         display: grid;
         grid-template-columns: repeat(10, 1fr);
