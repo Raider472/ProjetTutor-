@@ -54,9 +54,7 @@
             <button type="submit">Confirmer</button>
             <button type="submit">Retour</button>
         </div>
-
     </form>
-    
 </body>
 
 

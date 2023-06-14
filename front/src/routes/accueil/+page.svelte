@@ -4,8 +4,9 @@
     let user = 'NAE Gabriel';
 
 </script>
-<title>Accueil</title>
 
+
+<title>Accueil</title>
 <div id="pageAc">
     <div class="parent">
         <div class="entete-gauche">
@@ -38,13 +39,12 @@
                 <div class="testContents">
                 <form use:enhance method="POST">
                     <input type="hidden" name="status" value="true">
-                    <button class="buttonTest" type="submit">start</button>
+                    <button class="buttonTest" id="btnStart" type="submit">start</button>
                 </form>
                 <form use:enhance method="POST">
                     <input type="hidden" name="status" value="false">
-                    <button class="buttonTest" type="submit">stop</button>
-                    <br>
-                    <label class="buttonTest" for="choixPlaylist">Choix de playlist :</label>
+                    <button class="buttonTest" id="btnStop" type="submit">stop</button>
+                    <label class="buttonTest" id="choixPlaylistLabel" for="choixPlaylist">Choix de playlist :</label>
                 </form>
                 <form use:enhance method="POST">
                     <select class="buttonTest" id="choixPlaylist" name="playlistSelect">
@@ -125,21 +125,44 @@
     }
 
     .playlistDisplay .buttonTest {
-        width: 35%;
-        height: 5%;
-        margin-left: 65%;
-        margin-bottom: 5px;
         border-radius: 50px;
         font-size: 24px;
         background-color: #4E4E4E;
         color: white;
     }
+    
+    .playlistDisplay #btnStart {
+        margin-left: 200px;
+    }
+
+    .playlistDisplay #btnStop {
+        margin-right: 6em;
+    }
+
+    .playlistDisplay #choixPlaylist {
+        position: relative;
+        bottom: 2px;
+        margin-right: 30px;
+        padding: 3px 20px 3px 10px;
+    }
+
+    .playlistDisplay #choixPlaylistLabel {
+        padding: 5px;
+    }
 
     .playlistDisplay .testContents {
-        
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        position: relative;
+        bottom: 90px;
+        margin-left: 2%;
     }
 
     .titlePlaylist {
+        position: relative;
+        bottom: 10px;
+        right: 20px;
         text-align: left;
         font-size: 38px;
         margin-left: 2em;
