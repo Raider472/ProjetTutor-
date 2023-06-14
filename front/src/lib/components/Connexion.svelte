@@ -20,7 +20,7 @@
         .then(function (json) {
           console.log(json);
           if (json === true) {
-            window.location.href = "/playlistAccueil";
+            window.location.href = "/accueil";
           } else {
             labelMdp = "erreur connexion";
           }
