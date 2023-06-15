@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: docker/php/Dockerfile
     ports: 
-      - 8100:80
+      - 192.168.137.1:8100:80
     volumes:
       - ./api:/var/www/html/
 
@@ -28,7 +28,7 @@ services:
     restart: unless-stopped
     container_name: pma_api
     ports:
-      - 8020:80
+      - 192.168.137.1:8020:80
     depends_on:
       db_api:
         condition: service_healthy
@@ -41,7 +41,7 @@ services:
       context: .
       dockerfile: docker/front/Dockerfile
     ports:
-      - 5173:5173
+      - 192.168.137.1:5173:5173
     volumes:
       - ./front:/home/node/front
     stdin_open: true
