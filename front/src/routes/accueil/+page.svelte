@@ -10,7 +10,7 @@
 <div id="pageAc">
     <div class="parent">
         <div class="entete-gauche">
-            <p>PlaylistAPI</p>
+            <p>Diffub</p>
         </div>
         <div class="entete-droit">
             <p>Bienvenue, {user}</p>

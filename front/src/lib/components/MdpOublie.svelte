@@ -6,7 +6,7 @@
     <div id="div_page">
       <div id="div_menu">
         <header class="tete" id="nomApp">
-          <p id="titre_app">PlaylistsAPIOublie</p>
+          <p id="titre_app">Diffub</p>
         </header>
       </div>
       <div id="div_accueil">

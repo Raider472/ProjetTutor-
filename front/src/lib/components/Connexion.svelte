@@ -35,7 +35,7 @@
     <div id="div_page">
       <div id="div_logo">
         <header class="tete" id="nomApp">
-          <p id="titre_app">PlaylistsAPI</p>
+          <p id="titre_app">Diffub</p>
         </header>
         <img id="logo" src="" alt="" />
         <br />
